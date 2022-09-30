@@ -2,7 +2,7 @@ import json
 from lib2to3.pgen2 import token
 import requests
 
-URL = "http://money-manager-pranshu1902.herokuapp.com/api-token-auth/"
+URL = "https://money-manager-pranshu1902.herokuapp.com/api-token-auth/"
 getURL = "https://money-manager-pranshu1902.herokuapp.com/transactions/"
 
 headersData = {
@@ -24,3 +24,9 @@ auth = {
 "Authorization": str(tk),
 "Content-Type": "application/json"
 }
+
+data = json.dumps({"amount": 100, "description": "data added from terminal"})
+author = json.dumps({"username": "user", "password": "corona1902"})
+
+response = requests.post(getURL, headers=auth, data=data, auth=("user", "corona1902"))
+print(response.text)
